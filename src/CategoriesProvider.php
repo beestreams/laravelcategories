@@ -14,6 +14,7 @@ class CategoriesProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/Migrations');
+        
         $this->publishes([
             __DIR__ . '/Migrations' => $this->app->databasePath() . '/migrations'
         ], 'migrations');

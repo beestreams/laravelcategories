@@ -12,8 +12,5 @@
         "psr-4": {
             "Beestreams\\LaravelCategories\\": "packages/beestreams/laravelcategories/src"
         }
-    },
-    "require": {},
-    "require-dev": {
     }
 }

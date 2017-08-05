@@ -6,25 +6,36 @@ use Beestreams\LaravelCategories\Models\Category;
 
 trait Categorizable 
 {
+    /**
+     * Add or create single category
+     * @param String $name The Category name to be added
+     */
     public function addOrCreateCategory($name)
     {
         if (!is_string($name)) {
             return false;
         }
+
         $properties = [
             'name' => $name,
             'slug' => str_slug($name, '-')
         ];
 
         $category = Category::firstOrCreate($properties);
+
         $this->addToCategory($category->id);
     }
 
+    /**
+     * Add or create multiple categories
+     * @param Array $names Strings of names
+     */
     public function addOrCreateCategories(Array $names)
     {
         if (!is_array($names)) {
             return false;
         }
+
         $categories = collect();
         foreach ($names as $name) {
             $properties = [
@@ -44,6 +55,10 @@ trait Categorizable
         return $this->morphToMany(Category::class, 'categorizable');
     }
 
+    /**
+     * Add single category by ID
+     * @param int $id The ID of the Category
+     */
     public function addToCategory(int $id)
     {
         if (!$id) {
@@ -55,9 +70,14 @@ trait Categorizable
         return $this;
     }
 
+    /**
+     * Add to multiple categories by ID array
+     * @param Array $categoryIds Array of IDs
+     */
     public function addToCategories(Array $categoryIds)
     {
         $this->categories()->attach($categoryIds);
+        return $this;
     }
 
     /**
@@ -79,12 +99,20 @@ trait Categorizable
         return $this;
     }
 
+    /**
+     * Remove categories by IDs. Null value removes all
+     * @param  Array or nothing $ids
+     */
     public function removeCategories($ids = null)
     {
         $this->categories()->detach($ids);
         return $this;
     }
 
+    /**
+     * Remove category by ID or Name
+     * @param  Int or String $category will be checked and handled
+     */
     public function removeCategory($category)
     {
         if (is_int($category)) {
@@ -93,7 +121,9 @@ trait Categorizable
         if (is_string($category)) {
             $category = Category::where('name', $category)->firstOrFail();
         }
+
         $this->removeCategories([$category->id]);
+        
         return $this;
     }
 }
