@@ -1,7 +1,8 @@
 {
-    "name": "beestreams/laravelcategories",
-    "description": "Easily create categories for Laravel",
+    "name": "beestreams/laravel-categories",
+    "description": "Easily create categories for Laravel models",
     "type": "metapackage",
+    "license": "MIT",
     "authors": [
         {
             "name": "Mikael Biström",
