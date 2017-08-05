@@ -1,0 +1,14 @@
+{
+    "name": "beestreams/categories",
+    "description": "Easily create categories boilerplate for Laravel",
+    "type": "metapackage",
+    "authors": [
+        {
+            "name": "Mikael Biström",
+            "email": "studiotriangular@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+    }
+}
