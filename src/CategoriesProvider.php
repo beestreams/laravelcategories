@@ -1,6 +1,6 @@
 <?php
 
-namespace Beestreams\Categories;
+namespace Beestreams\LaravelCategories;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Beestreams\Categories\Models;
+namespace Beestreams\LaravelCategories\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Beestreams\Categories\Traits;
+namespace Beestreams\LaravelCategories\Traits;
 
-use Beestreams\Categories\Models\Category;
+use Beestreams\LaravelCategories\Models\Category;
 
 trait Categorizable 
 {
