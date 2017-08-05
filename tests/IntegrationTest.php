@@ -1,7 +1,7 @@
 <?php
 use Tests\TestCase;
 use Illuminate\Database\Eloquent\Model;
-use Beestreams\Categories\Models\Category;
+use Beestreams\LaravelCategories\Models\Category;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -91,5 +91,5 @@ class IntegrationTest extends TestCase
 */
 class CatObject extends Model
 {
-    use Beestreams\Categories\Traits\Categorizable;
+    use Beestreams\LaravelCategories\Traits\Categorizable;
 }
