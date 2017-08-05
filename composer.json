@@ -1,6 +1,6 @@
 {
-    "name": "beestreams/categories",
-    "description": "Easily create categories boilerplate for Laravel",
+    "name": "beestreams/laravelcategories",
+    "description": "Easily create categories for Laravel",
     "type": "metapackage",
     "authors": [
         {
@@ -8,6 +8,11 @@
             "email": "studiotriangular@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Beestreams\\LaravelCategories\\": "packages/beestreams/laravelcategories/src"
+        }
+    },
     "require": {},
     "require-dev": {
     }
