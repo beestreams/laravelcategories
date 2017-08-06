@@ -1,5 +1,5 @@
 {
-    "name": "beestreams/laravel-categories",
+    "name": "beestreams/laravelcategories",
     "description": "Easily create categories for Laravel models",
     "type": "metapackage",
     "license": "MIT",
