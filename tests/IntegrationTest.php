@@ -56,6 +56,28 @@ class IntegrationTest extends TestCase
     }
 
     /** @test */
+    public function categories_can_be_synced ()
+    {
+        $oldCats = ['Cats', 'Dogs', 'Goats'];
+        $newCats = ['Dogs', 'Goats'];
+        $this->exampleModel->addOrCreateCategories($oldCats);
+        $categoriesToSync = collect();
+        foreach ($newCats as $name) {
+            $properties = [
+                'name' => $name,
+                'slug' => str_slug($name, '-')
+            ];
+            $categoriesToSync->push(Category::firstOrCreate($properties));
+        }
+        $this->exampleModel->syncCategories($categoriesToSync);
+        
+        $idsToSync = $categoriesToSync->pluck('id')->toArray();
+        $currentIds = $this->exampleModel->categories->pluck('id')->toArray();
+
+        $this->assertEquals($idsToSync, $currentIds);
+    }
+
+    /** @test */
     public function categories_are_not_added_multiple_times ()
     {
         // Tests if existing categories are re-added when attached to model

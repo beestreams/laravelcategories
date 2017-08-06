@@ -24,6 +24,8 @@ trait Categorizable
         $category = Category::firstOrCreate($properties);
 
         $this->addToCategory($category->id);
+
+        return $this;
     }
 
     /**
@@ -45,6 +47,8 @@ trait Categorizable
             $categories->push(Category::firstOrCreate($properties));
         }
         $this->addToCategories($categories->pluck('id')->toArray());
+
+        return $this;
     }
 
     /**
@@ -82,17 +86,15 @@ trait Categorizable
 
     /**
      * Adds existing categories to model
-     * @param Array $categoryIds Array of existing Ids
+     * @param Collection $categoryIds Collection of Category models
      */
-    public function syncCategories(Array $categoryIds)
+    public function syncCategories($categories)
     {
-        if (empty($categoryIds)) {
+        if ($categories->isEmpty()) {
             return false;
         }
 
-        if (!is_array($categoryIds)) {
-            $categoryIds = $categoryIds->pluck('id')->toArray();
-        }
+        $categoryIds = $categories->pluck('id')->toArray();
 
         $this->categories()->sync($categoryIds);
 
